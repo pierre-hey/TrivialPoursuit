@@ -1,0 +1,7 @@
+{
+  "name": "TrivialPoursuit",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
