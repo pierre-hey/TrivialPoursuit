@@ -12,35 +12,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class GamePage implements OnInit {
 
-
-  /*
-    Jeu démarre si : bool de l'autre page qui est true
-    : isGameStarted
-  
-  
-  
-  
-  */
-
-
-
   questionsTab: Question[] = [];
-  isGameStarted: boolean = false;
   questionIndex: number = 0;
-
   question?: Question;
   answers!: Answer[];
   answer!: Answer | undefined;
+  userScore: number = 0;
 
   isCheckedResponse: boolean = false;
   isAnswerOK: boolean = false;
-  userScore: number = 0;
+  isEnded: boolean = false;
 
   userName: string = '';
-  //isUserNameValid: boolean = false;
-
-
-  isEnded: boolean = false;
   difficulty: string = '';
 
 
@@ -83,12 +66,8 @@ export class GamePage implements OnInit {
  * @param index 
  */
   getQuestion() {
-
-
-    //this.isEnded = false;
     this.question = this.questionsTab[this.questionIndex];
     this.answers = this.shuffleArray(this.question.answers);
-
 
     // console.log("###########################")
     // console.log(" getQuestion()")
@@ -120,7 +99,6 @@ export class GamePage implements OnInit {
       this.questionIndex = 0;
       this.userScore = 0;
       this.userName = '';
-      //  this.isUserNameValid = false;
     }
 
     if (this.questionIndex + 1 >= this.questionsTab.length) {
