@@ -4,6 +4,7 @@ import { OpenTriviaService } from '../services/open-trivia-service.service';
 import { Question } from '../entities/question';
 import { Answer } from '../entities/answer';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TextToSpeech } from '@capacitor-community/text-to-speech';
 
 @Component({
   selector: 'app-game',
@@ -130,4 +131,23 @@ export class GamePage implements OnInit {
     });
     toast.present();
   }
+
+
+  async readQuestion(){
+     TextToSpeech.getSupportedVoices();
+     
+     if(this.question){
+      await TextToSpeech.speak({
+        text:this.question.question,
+        lang: 'fr-FR',
+        rate: 2.0,
+        pitch: 1.0,
+        volume: 2.0,
+        category: 'ambient',
+      });
+     }
+     
+    
+  }
+
 }

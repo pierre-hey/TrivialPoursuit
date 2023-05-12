@@ -19,8 +19,15 @@
       <h1 class="ion-text-center" [innerHTML]="question?.question"></h1>
     </ion-item>
 
-    <ion-grid >
-      <ion-row >
+    <ion-button expand="block" shape="round" color="warning" (click)="readQuestion()">
+      <ion-icon name="musical-notes-outline"></ion-icon>
+      Monte le son
+      <ion-icon name="musical-notes-outline"></ion-icon>
+    </ion-button>
+
+
+    <ion-grid>
+      <ion-row>
         <ion-col size="6" *ngFor="let ans of question?.answers; let i = index;">
           <ion-button expand="block" color="light"
             color="{{answer == null ? 'light' : ans === question?.correctAnswer ? 'success' : 'danger'}}"
@@ -32,7 +39,7 @@
 
     </ion-grid>
 
-    <ion-button *ngIf="answer && !isEnded" expand="full" (click)="nextQuestion()">Question suivante</ion-button>   
+    <ion-button *ngIf="answer && !isEnded" expand="full" (click)="nextQuestion()">Question suivante</ion-button>
     <ion-button *ngIf="answer && isEnded" expand="full" (click)="navigate()">Score</ion-button>
   </div>
 </ion-content>
