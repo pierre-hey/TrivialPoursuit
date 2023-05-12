@@ -15,6 +15,22 @@ const routes: Routes = [
     path: 'kitten',
     loadChildren: () => import('./kitten/kitten.module').then( m => m.KittenPageModule)
   },
+  {
+    path: 'game',
+    loadChildren: () => import('./game/game.module').then( m => m.GamePageModule)
+  },
+  {
+    path: 'game/:userName/:difficulty',
+    loadChildren: () => import('./game/game.module').then( m => m.GamePageModule)
+  },
+  {
+    path: 'score',
+    loadChildren: () => import('./score/score.module').then( m => m.ScorePageModule)
+  },
+  {
+    path: 'score/:score',
+    loadChildren: () => import('./score/score.module').then( m => m.ScorePageModule)
+  },
 ];
 
 @NgModule({

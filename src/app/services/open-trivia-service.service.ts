@@ -10,7 +10,7 @@ import { Question } from '../entities/question';
 export class OpenTriviaService {
 
 
-  numberQuestion: number = 100;
+  numberQuestion: number = 2;
   urlTrivialBase = 'https://opentdb.com/api.php?amount=' + this.numberQuestion;
 
   //tabQuestions: Question[] = [];
@@ -48,6 +48,7 @@ export class OpenTriviaService {
     }
   */
 // Normalement, utiliser any pour Promise<Any>
+// si entité question est de même forme que le JSON, c'est ok, par contre s'il change, ca pète
   getQuestionsTabFromAPI(difficulty: string): Promise<Question[]> {
     // https://opentdb.com/api.php?amount=2&difficulty=hard
 
@@ -92,9 +93,6 @@ export class OpenTriviaService {
     });
 
     return questionsTab;
-
-
-
   }
 
 }

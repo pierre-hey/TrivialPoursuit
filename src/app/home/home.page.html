@@ -13,11 +13,10 @@
     </ion-toolbar>
   </ion-header>
 
-
-  <ion-list *ngIf="!isUserNameValid && !isGameStarted">
+  <ion-list>
     <ion-item>
       <ion-label floating>Votre pseudo</ion-label>
-      <ion-input type="text"  [(ngModel)]="userName"></ion-input>
+      <ion-input type="text" [(ngModel)]="userName"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -36,48 +35,4 @@
 
     <ion-button expand="full" (click)="checkUsername()">Commencer</ion-button>
   </ion-list>
-
-
-  <div class="content" *ngIf="isUserNameValid && isGameStarted">
-
-    <h3 color="primary">Bienvenue {{ userName }}</h3>
-
-    <ion-item>
-      <h1 class="ion-text-center">{{ question.question }}</h1>
-    </ion-item>
-
-    <!-- <ion-grid>
-      <ion-row>
-        <ion-col *ngFor="let ans of answers">
-          <ion-button (click)="checkAnswer(ans)">{{ ans }}</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid> -->
-
-
-    <ion-grid >
-      <ion-row >
-        <ion-col size="6" *ngFor="let ans of question.answers; let i = index;">
-          <ion-button expand="block" color="light"
-            color="{{answer == null ? 'light' : ans === question.correctAnswer ? 'success' : 'danger'}}"
-            (click)="checkAnswer(ans)">{{ ans.answer }}
-          </ion-button>
-          <!-- !isCheckedResponse ? 'light' : ans === question.correctAnswer ? 'success' : 'danger'  -->
-        </ion-col>
-
-        <!-- <ion-col *ngIf="!isOdd" size="6">
-          <ion-button expand="block"
-            color="{{answer == null ? 'light' : ans === question.correctAnswer ? 'success' : 'danger'}}"
-            (click)="checkAnswer(ans)">{{ ans.answer }}
-          </ion-button>
-        </ion-col> -->
-      </ion-row>
-
-
-    </ion-grid>
-
-    <ion-button *ngIf="answer && !isEnded" expand="full" (click)="nextQuestion()">Question suivante</ion-button>
-    <ion-button *ngIf="answer && isEnded" expand="full" (click)="nextQuestion()">Commencer</ion-button>
-
-  </div>
 </ion-content>
