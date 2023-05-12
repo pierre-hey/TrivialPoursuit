@@ -14,7 +14,7 @@
   </ion-header>
 
 
-  <ion-list *ngIf="!isUserNameValid">
+  <ion-list *ngIf="!isUserNameValid && !isGameStarted">
     <ion-item>
       <ion-label floating>Votre pseudo</ion-label>
       <ion-input type="text"  [(ngModel)]="userName"></ion-input>
@@ -38,7 +38,7 @@
   </ion-list>
 
 
-  <div class="content" *ngIf="isUserNameValid">
+  <div class="content" *ngIf="isUserNameValid && isGameStarted">
 
     <h3 color="primary">Bienvenue {{ userName }}</h3>
 

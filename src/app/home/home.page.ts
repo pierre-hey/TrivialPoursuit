@@ -31,6 +31,7 @@ export class HomePage {
   isCheckedResponse: boolean = false;
 
   isEnded: boolean = false;
+  isGameStarted: boolean = false;
 
   constructor(
     public alertCtrl: AlertController,
@@ -61,11 +62,15 @@ export class HomePage {
    */
   async getQuestionTab() {
     try {
-      this.questionsTab = await this.openTriviaService.getQuestionTabPromise(this.difficulty);
+      //this.questionsTab = await this.openTriviaService.getQuestionTabPromise(this.difficulty);
+      this.questionsTab = await this.openTriviaService.getQuestionsTabFromAPI(this.difficulty);
+      
       this.getQuestion();
+      this.isGameStarted = true;
     }
-    catch {
-      console.log('Une erreur est survenue')
+    catch (error) {
+      console.log('Une erreur est survenue');
+      console.log(error);
     }
   }
 
@@ -116,12 +121,10 @@ export class HomePage {
 
     if (this.questionIndex + 1 >= this.questionsTab.length) {
       this.isEnded = true;
+      this.isGameStarted = false;
     }
 
-
     this.getQuestion();
-
-
 
   }
 
@@ -158,7 +161,7 @@ export class HomePage {
 
   async showToast() {
     const toast = await this.toastCtrl.create({
-      message: 'Votre score : ' + this.userScore,
+      message: 'Votre score : ' + this.userScore + "/" + this.questionsTab.length,
       duration: 3000,
 
     });

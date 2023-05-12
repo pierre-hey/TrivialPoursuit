@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'kitten',
+    loadChildren: () => import('./kitten/kitten.module').then( m => m.KittenPageModule)
+  },
 ];
 
 @NgModule({
